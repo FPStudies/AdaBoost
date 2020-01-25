@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29709.97
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PSZT_pr2", "PSZT_pr2.vcxproj", "{F4F3DD36-D38E-4419-80C0-F3C20E747903}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F4F3DD36-D38E-4419-80C0-F3C20E747903}.Debug|x64.ActiveCfg = Debug|x64
+		{F4F3DD36-D38E-4419-80C0-F3C20E747903}.Debug|x64.Build.0 = Debug|x64
+		{F4F3DD36-D38E-4419-80C0-F3C20E747903}.Debug|x86.ActiveCfg = Debug|Win32
+		{F4F3DD36-D38E-4419-80C0-F3C20E747903}.Debug|x86.Build.0 = Debug|Win32
+		{F4F3DD36-D38E-4419-80C0-F3C20E747903}.Release|x64.ActiveCfg = Release|x64
+		{F4F3DD36-D38E-4419-80C0-F3C20E747903}.Release|x64.Build.0 = Release|x64
+		{F4F3DD36-D38E-4419-80C0-F3C20E747903}.Release|x86.ActiveCfg = Release|Win32
+		{F4F3DD36-D38E-4419-80C0-F3C20E747903}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0A92E4DB-9F21-4A34-A98A-16C615C7684F}
+	EndGlobalSection
+EndGlobal
