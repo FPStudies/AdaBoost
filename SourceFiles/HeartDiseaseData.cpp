@@ -70,36 +70,47 @@ void HeartDiseaseData::readData(const char * path)
 	Set* set;
 	dataSet->push_back(set = new Set());
 
-	if (loadFile(path, stream)) return;
+	std::ifstream file;
+	file.exceptions(std::ifstream::failbit | std::ifstream::badbit);
+	try {
+		file.open(path);
+		uint iter;
+		file >> iter;
 
-	while(stream) {
-		float ftmp;
-		std::string tmp;
+		for (uint i = 0; i < iter; ++i) {
+			float ftmp;
+			std::string tmp;
 		
-		stream >> tmp;
-		std::cout << tmp << std::endl << std::endl;
-		set->age = atoi(tmp.c_str());
+			file >> set->age;
 
+			file >> set->sex;
+			file >> set->cp;
+			file >> set->trestbps;
+			file >> set->chol;
+			file >> set->fbs;
+			file >> set->restecg;
+			file >> set->thalach;
+			file >> set->exang;
 
-		stream >> set->sex;
-		stream >> set->cp;
-		stream >> set->trestbps;
-		stream >> set->chol;
-		stream >> set->fbs;
-		stream >> set->restecg;
-		stream >> set->thalach;
-		stream >> set->exang;
+			file >> ftmp;
+			set->oldpeak = static_cast<int>(ftmp * 10);
 
-		stream >> ftmp;
-		set->oldpeak = static_cast<int>(ftmp * 10);
+			file >> set->slope;
+			file >> set->ca;
+			file >> set->thal;
+			file >> set->num;
 
-		stream >> set->slope;
-		stream >> set->ca;
-		stream >> set->thal;
-		stream >> set->num;
+			dataSet->push_back(set = new Set());
+		}
 
-		dataSet->push_back(set = new Set());
+		file.close();
 	}
+	catch (std::exception & e) {
+		std::cout << e.what() << std::endl;
+		return;
+	}
+
+	
 
 
 #endif
