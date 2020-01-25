@@ -1,6 +1,5 @@
 #include "../HeaderFiles/HeartDiseaseData.h"
 
-
 HeartDiseaseData::HeartDiseaseData() 
 {
 	dataSet = new std::vector<Set*>();
@@ -64,10 +63,8 @@ void HeartDiseaseData::readData(const char * path)
 #endif
 
 #ifdef SET2
-
-	std::stringstream stream;
-
 	Set* set;
+	dataSet->push_back(new Set());	// first Set is for median
 	dataSet->push_back(set = new Set());
 
 	std::ifstream file;
@@ -80,25 +77,14 @@ void HeartDiseaseData::readData(const char * path)
 		for (uint i = 0; i < iter; ++i) {
 			float ftmp;
 			std::string tmp;
-		
-			file >> set->age;
 
-			file >> set->sex;
-			file >> set->cp;
-			file >> set->trestbps;
-			file >> set->chol;
-			file >> set->fbs;
-			file >> set->restecg;
-			file >> set->thalach;
-			file >> set->exang;
-
-			file >> ftmp;
-			set->oldpeak = static_cast<int>(ftmp * 10);
-
-			file >> set->slope;
-			file >> set->ca;
-			file >> set->thal;
-			file >> set->num;
+			for (uint j = 0; j < NUMBER_OF_ATTR; ++j) {
+				if (j != 9) file >> set->values[j];
+				else {
+					file >> ftmp;
+					set->values[j] = static_cast<int>(ftmp * 10);
+				}
+			}
 
 			dataSet->push_back(set = new Set());
 		}
@@ -109,9 +95,42 @@ void HeartDiseaseData::readData(const char * path)
 		std::cout << e.what() << std::endl;
 		return;
 	}
+	Set* first = (*dataSet)[0];
 
+	for (uint i = 0; i < NUMBER_OF_ATTR; ++i) {
+		first->values[i] = 0;
+	}
+
+	sort(dataSet->begin() + 1, dataSet->end(),
+		[](const Set* a, const Set* b) -> bool {
+			return a->values[0] > b->values[0];
+		});
+	first->values[0] = dataSet->size() % 2 == 0 ? ((*dataSet)[dataSet->size() / 2]->values[0] + (*dataSet)[dataSet->size() / 2 + 1]->values[0]) / 2 : (*dataSet)[(dataSet->size() + 1) / 2]->values[0];
 	
+	sort(dataSet->begin() + 1, dataSet->end(),
+		[](const Set* a, const Set* b) -> bool {
+			return a->values[3] > b->values[3];
+		});
+	first->values[3] = dataSet->size() % 2 == 0 ? ((*dataSet)[dataSet->size() / 2]->values[3] + (*dataSet)[dataSet->size() / 2 + 1]->values[3]) / 2 : (*dataSet)[(dataSet->size() + 1) / 2]->values[3];
 
+	sort(dataSet->begin() + 1, dataSet->end(),
+		[](const Set* a, const Set* b) -> bool {
+			return a->values[4] > b->values[4];
+		});
+	first->values[4] = dataSet->size() % 2 == 0 ? ((*dataSet)[dataSet->size() / 2]->values[4] + (*dataSet)[dataSet->size() / 2 + 1]->values[4]) / 2 : (*dataSet)[(dataSet->size() + 1) / 2]->values[4];
+
+	sort(dataSet->begin() + 1, dataSet->end(),
+		[](const Set* a, const Set* b) -> bool {
+			return a->values[7] > b->values[7];
+		});
+	first->values[7] = dataSet->size() % 2 == 0 ? ((*dataSet)[dataSet->size() / 2]->values[7] + (*dataSet)[dataSet->size() / 2 + 1]->values[7]) / 2 : (*dataSet)[(dataSet->size() + 1) / 2]->values[7];
+
+	sort(dataSet->begin() + 1, dataSet->end(),
+		[](const Set* a, const Set* b) -> bool {
+			return a->values[9] > b->values[9];
+		});
+	first->values[9] = dataSet->size() % 2 == 0 ? ((*dataSet)[dataSet->size() / 2]->values[9] + (*dataSet)[dataSet->size() / 2 + 1]->values[9]) / 2 : (*dataSet)[(dataSet->size() + 1) / 2]->values[9];
+	
 
 #endif
 
@@ -210,8 +229,8 @@ void HeartDiseaseData::coutData()
 std::ostream& operator<<(std::ostream& stream, const HeartDiseaseData::Set& set)
 {
 #ifdef SET2
-	stream << set.age << "\t" << set.sex << "\t" << set.cp << "\t" << set.trestbps << "\t" << set.chol << "\t" << set.fbs << "\t" << set.restecg << "\t" \
-		<< set.thalach << "\t" << set.exang << "\t" << set.oldpeak << "\t" << set.slope << "\t" << set.ca << "\t" << set.thal << "\t" << set.num << "\t";
+	stream << set.values[0] << "\t" << set.values[1] << "\t" << set.values[2] << "\t" << set.values[3] << "\t" << set.values[4] << "\t" << set.values[5] << "\t" << set.values[6] << "\t" \
+		<< set.values[7] << "\t" << set.values[8] << "\t" << set.values[9] << "\t" << set.values[10] << "\t" << set.values[11] << "\t" << set.values[12] << "\t" << set.values[13] << "\t";
 
 	return stream;
 #endif

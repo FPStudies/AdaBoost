@@ -5,6 +5,7 @@
 #include <sstream>
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 #define SET2
 
@@ -16,6 +17,8 @@ typedef unsigned char uchar;
 class HeartDiseaseData
 {
 public:
+	const static uint NUMBER_OF_ATTR = 14;
+
 	enum Cp { // chest pain type
 		typicalAngina = 1,
 		atypicalAngina = 2,
@@ -152,20 +155,22 @@ private:
 
 	struct Set {
 
-		/* 1 */ shortInt age;
-		/* 2 */ shortInt sex; // (1 = male; 0 = female)
-		/* 3 */ shortInt cp;
-		/* 4 */ shortInt trestbps; // resting blood pressure (in mm Hg on admission to the hospital)
-		/* 5 */ shortInt chol; //serum cholestoral in mg / dl
-		/* 6 */ shortInt fbs; //(fasting blood sugar > 120 mg/dl) (1 = true; 0 = false)
-		/* 7 */ shortInt restecg;
-		/* 8 */ shortInt thalach; // maximum heart rate achieved
-		/* 9 */ shortInt exang; // exercise induced angina (1 = yes; 0 = no)
-		/* 10 */ shortInt oldpeak; // ST depression induced by exercise relative to rest
-		/* 11 */ shortInt slope; // the slope of the peak exercise ST segment
-		/* 12 */ shortInt ca; // number of major vessels (0-3) colored by flourosopy
-		/* 13 */ shortInt thal; // 3 = normal; 6 = fixed defect; 7 = reversable defect
-		/* 14 */ shortInt num; // Value 0: < 50% diameter narrowing; --Value 1: > 50 % diameter narrowing
+		/* 1 */// shortInt age;
+		/* 2 */// shortInt sex; // (1 = male; 0 = female)
+		/* 3 */// shortInt cp;
+		/* 4 */// shortInt trestbps; // resting blood pressure (in mm Hg on admission to the hospital)
+		/* 5 */// shortInt chol; //serum cholestoral in mg / dl
+		/* 6 */// shortInt fbs; //(fasting blood sugar > 120 mg/dl) (1 = true; 0 = false)
+		/* 7 */// shortInt restecg;
+		/* 8 */// shortInt thalach; // maximum heart rate achieved
+		/* 9 */// shortInt exang; // exercise induced angina (1 = yes; 0 = no)
+		/* 10 */// shortInt oldpeak; // ST depression induced by exercise relative to rest
+		/* 11 */// shortInt slope; // the slope of the peak exercise ST segment
+		/* 12 */// shortInt ca; // number of major vessels (0-3) colored by flourosopy
+		/* 13 */// shortInt thal; // 3 = normal; 6 = fixed defect; 7 = reversable defect
+		/* 14 */// shortInt num; // Value 0: < 50% diameter narrowing; --Value 1: > 50 % diameter narrowing
+
+		shortInt values[NUMBER_OF_ATTR];
 
 		/*
 		Used types
