@@ -2,16 +2,19 @@
 //
 
 #include <iostream>
-#include "../HeaderFiles/HeartDiseaseData.h"
+//#include "../HeaderFiles/HeartDiseaseData.h"
+//#include "../HeaderFiles/Tree.h"
+#include "../OryginalTree.cpp"
 
 int main()
 {
     std::cout << "Hello World!\n";
 
-    HeartDiseaseData data;
-    data.readData("Data/newSwitzerland.txt");
-    data.coutData();
+    //HeartDiseaseData data;
+    //data.readData("Data/newSwitzerland.txt");
+    //data.coutData();
 
+	buildID3Tree();
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

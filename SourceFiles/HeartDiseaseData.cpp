@@ -1,6 +1,6 @@
 #include "../HeaderFiles/HeartDiseaseData.h"
 
-HeartDiseaseData::HeartDiseaseData() 
+HeartDiseaseData::HeartDiseaseData()
 {
 	dataSet = new std::vector<Set*>();
 	dataSet->reserve(1400);
@@ -33,7 +33,7 @@ bool HeartDiseaseData::loadFile(const char* path, std::stringstream& stream)
 
 
 
-void HeartDiseaseData::readData(const char * path)
+void HeartDiseaseData::readData(const char* path)
 {
 #ifdef SET1
 	std::string* data = new std::string;
@@ -103,40 +103,40 @@ void HeartDiseaseData::readData(const char * path)
 
 	sort(dataSet->begin() + 1, dataSet->end(),
 		[](const Set* a, const Set* b) -> bool {
-			return a->values[0] > b->values[0];
-		});
+		return a->values[0] > b->values[0];
+	});
 	first->values[0] = dataSet->size() % 2 == 0 ? ((*dataSet)[dataSet->size() / 2]->values[0] + (*dataSet)[dataSet->size() / 2 + 1]->values[0]) / 2 : (*dataSet)[(dataSet->size() + 1) / 2]->values[0];
-	
+
 	sort(dataSet->begin() + 1, dataSet->end(),
 		[](const Set* a, const Set* b) -> bool {
-			return a->values[3] > b->values[3];
-		});
+		return a->values[3] > b->values[3];
+	});
 	first->values[3] = dataSet->size() % 2 == 0 ? ((*dataSet)[dataSet->size() / 2]->values[3] + (*dataSet)[dataSet->size() / 2 + 1]->values[3]) / 2 : (*dataSet)[(dataSet->size() + 1) / 2]->values[3];
 
 	sort(dataSet->begin() + 1, dataSet->end(),
 		[](const Set* a, const Set* b) -> bool {
-			return a->values[4] > b->values[4];
-		});
+		return a->values[4] > b->values[4];
+	});
 	first->values[4] = dataSet->size() % 2 == 0 ? ((*dataSet)[dataSet->size() / 2]->values[4] + (*dataSet)[dataSet->size() / 2 + 1]->values[4]) / 2 : (*dataSet)[(dataSet->size() + 1) / 2]->values[4];
 
 	sort(dataSet->begin() + 1, dataSet->end(),
 		[](const Set* a, const Set* b) -> bool {
-			return a->values[7] > b->values[7];
-		});
+		return a->values[7] > b->values[7];
+	});
 	first->values[7] = dataSet->size() % 2 == 0 ? ((*dataSet)[dataSet->size() / 2]->values[7] + (*dataSet)[dataSet->size() / 2 + 1]->values[7]) / 2 : (*dataSet)[(dataSet->size() + 1) / 2]->values[7];
 
 	sort(dataSet->begin() + 1, dataSet->end(),
 		[](const Set* a, const Set* b) -> bool {
-			return a->values[9] > b->values[9];
-		});
+		return a->values[9] > b->values[9];
+	});
 	first->values[9] = dataSet->size() % 2 == 0 ? ((*dataSet)[dataSet->size() / 2]->values[9] + (*dataSet)[dataSet->size() / 2 + 1]->values[9]) / 2 : (*dataSet)[(dataSet->size() + 1) / 2]->values[9];
-	
+
 
 #endif
 
 #ifdef SET3
 	std::stringstream stream;
-	std::string *data = new std::string;
+	std::string* data = new std::string;
 	data->reserve(100000);
 
 	loadFile(path, stream);
@@ -150,7 +150,7 @@ void HeartDiseaseData::readData(const char * path)
 	while (stream) {
 		++index;
 		stream >> tmp;
-		
+
 		switch (index) {
 		case 3:
 			set->age = tmp;

@@ -122,7 +122,7 @@ private:
 		/* 56 */ uint cday; // day of cardiac cath (sp?)
 		/* 57 */ uint cyr; // year of cardiac cath (sp?)
 		/* 58 */ bool num; // Value 0: < 50% diameter narrowing; --Value 1: > 50 % diameter narrowing
-	
+
 		/* 59 */ int lmt; // vessel
 		/* 60 */ int ladprox; // vessel
 		/* 61 */ int laddist; // vessel
@@ -210,7 +210,7 @@ private:
 
 	std::vector<Set*>* dataSet;
 
-	
+
 
 	bool loadFile(const char* path, std::stringstream& stream);
 	bool isDataSet = false;

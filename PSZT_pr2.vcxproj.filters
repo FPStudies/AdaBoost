@@ -15,15 +15,38 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="SourceFiles\PSZT_pr2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OryginalTree.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="SourceFiles\HeartDiseaseData.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\PSZT_pr2.cpp">
+    <ClCompile Include="SourceFiles\Tree.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <Text Include="Data\newCleveland.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="Data\newHungarian.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="Data\newLongBeachVA.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="Data\newSwitzerland.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
     <ClInclude Include="HeaderFiles\HeartDiseaseData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Tree.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -147,11 +147,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="OryginalTree.cpp" />
     <ClCompile Include="SourceFiles\HeartDiseaseData.cpp" />
     <ClCompile Include="SourceFiles\PSZT_pr2.cpp" />
+    <ClCompile Include="SourceFiles\Tree.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Data\newCleveland.txt" />
+    <Text Include="Data\newHungarian.txt" />
+    <Text Include="Data\newLongBeachVA.txt" />
+    <Text Include="Data\newSwitzerland.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HeaderFiles\HeartDiseaseData.h" />
+    <ClInclude Include="HeaderFiles\Tree.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
