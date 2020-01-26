@@ -152,9 +152,6 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="Data\newCleveland.txt" />
-    <Text Include="Data\newHungarian.txt" />
-    <Text Include="Data\newLongBeachVA.txt" />
-    <Text Include="Data\newSwitzerland.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HeaderFiles\HeartDiseaseData.h" />

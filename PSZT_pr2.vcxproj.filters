@@ -26,15 +26,6 @@
     <Text Include="Data\newCleveland.txt">
       <Filter>Resource Files</Filter>
     </Text>
-    <Text Include="Data\newHungarian.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
-    <Text Include="Data\newLongBeachVA.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
-    <Text Include="Data\newSwitzerland.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HeaderFiles\HeartDiseaseData.h">

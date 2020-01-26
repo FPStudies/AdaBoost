@@ -11,7 +11,7 @@ int main()
     std::cout << "Hello World!\n";
 
     HeartDiseaseData data;
-    data.readData("Data/newSwitzerland.txt");
+    data.readData("Data/newCleveland.txt");
     data.coutData();
 
 	//turn pointers to objects

@@ -40,7 +40,7 @@ float HeartDiseaseData::countImpurity(float yes, float no)
 
 float HeartDiseaseData::countCutoff(int i)
 {
-	sort(dataSet->begin() + 1, dataSet->end(),
+	sort(dataSet->begin(), dataSet->end()-1,
 		[&i](const Set* a, const Set* b) -> bool {
 		return a->values[i] < b->values[i];
 	});
@@ -57,8 +57,8 @@ float HeartDiseaseData::countCutoff(int i)
 		float impurityMore = countImpurity((float)(allYes - yes), (float)(allNo - no));
 		impurity.push_back(((impurityLess * (float)(yes + no)) + (impurityMore*(float)(allYes + allNo - yes - no)))/ (float)(allYes + allNo));
 
-		if(i==0) std::cout << i << ": " << (((*it)->values[i])) << '+' << ((*(it + 1))->values[i]) << "/2 =" << (((float)(*it)->values[i]) + (float)((*(it + 1))->values[i])) / 2.0 << " \n";
-		averages.push_back(((float)((*it)->values[i]) + (float)((*(it+1))->values[i])) / 2.0);
+		//if(i==0) std::cout << i << ": " << (((*it)->values[i])) << '+' << ((*(it + 1))->values[i]) << "/2 =" << (((float)(*it)->values[i]) + (float)((*(it + 1))->values[i])) / 2.0 << " \n";
+		averages.push_back((((double)((*it)->values[i])) + ((double)((*(it+1))->values[i]))) / 2.0);
 	}
 
 	std::pair<float, int> minimpurity;
@@ -107,10 +107,10 @@ void HeartDiseaseData::readData(const char* path)
 
 #ifdef SET2
 
-	cutoff[1] = cutoff[5] = cutoff[8] = 0;
+	
 
-	Set* set;
-	dataSet->push_back(set = new Set());
+	Set* set = new Set();
+	//dataSet->push_back(set);
 
 	std::ifstream file;
 	file.exceptions(std::ifstream::failbit | std::ifstream::badbit);
@@ -124,11 +124,7 @@ void HeartDiseaseData::readData(const char* path)
 			std::string tmp;
 
 			for (uint j = 0; j < NUMBER_OF_ATTR; ++j) {
-				if (j != 9) file >> set->values[j];
-				else {
-					file >> ftmp;
-					set->values[j] = static_cast<int>(ftmp * 10);
-				}
+				file >> set->values[j];
 			}
 			if (set->values[NUMBER_OF_ATTR - 1] == 0) ++allNo;
 			else ++allYes;
@@ -143,6 +139,7 @@ void HeartDiseaseData::readData(const char* path)
 		return;
 	}
 
+	cutoff[1] = cutoff[5] = cutoff[8] = 0;
 	cutoff[0] = countCutoff(0);
 	cutoff[2] = countCutoff(2);
 	cutoff[3] = countCutoff(3);
@@ -278,7 +275,10 @@ void HeartDiseaseData::coutData()
 		std::cout << *it << "\n";
 	}
 
+	std::cout << "cutoff points:\n";
 	for (int i = 0; i < NUMBER_OF_ATTR - 1; ++i) std::cout << cutoff[i] << " \t";
+	std::cout << "\n";
+	std::cout << dataSet->size();
 	std::cout.flush();
 }
 
