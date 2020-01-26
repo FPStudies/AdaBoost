@@ -48,7 +48,7 @@ float HeartDiseaseData::countCutoff(int i)
 	std::vector<float> averages, impurity;
 	int yes = 0;
 	int no = 0;
-	for (auto it = dataSet->begin(); it != dataSet->end()-2; ++it)
+	for (auto it = dataSet->begin(); it != dataSet->end()-1; ++it)
 	{
 		if ((*it)->values[NUMBER_OF_ATTR - 1] == 0) ++no;
 		else ++yes;
@@ -109,7 +109,7 @@ void HeartDiseaseData::readData(const char* path)
 
 	
 
-	Set* set = new Set();
+	Set* set;
 	//dataSet->push_back(set);
 
 	std::ifstream file;
@@ -120,8 +120,7 @@ void HeartDiseaseData::readData(const char* path)
 		file >> iter;
 
 		for (uint i = 0; i < iter; ++i) {
-			float ftmp;
-			std::string tmp;
+			dataSet->push_back(set = new Set());
 
 			for (uint j = 0; j < NUMBER_OF_ATTR; ++j) {
 				file >> set->values[j];
@@ -129,7 +128,7 @@ void HeartDiseaseData::readData(const char* path)
 			if (set->values[NUMBER_OF_ATTR - 1] == 0) ++allNo;
 			else ++allYes;
 
-			dataSet->push_back(set = new Set());
+			
 		}
 
 		file.close();
@@ -138,18 +137,19 @@ void HeartDiseaseData::readData(const char* path)
 		std::cout << e.what() << std::endl;
 		return;
 	}
+	//dataSet->pop_back();
 
 	cutoff[1] = cutoff[5] = cutoff[8] = 0;
-	cutoff[0] = countCutoff(0);
-	cutoff[2] = countCutoff(2);
-	cutoff[3] = countCutoff(3);
-	cutoff[4] = countCutoff(4);
-	cutoff[6] = countCutoff(6);
-	cutoff[7] = countCutoff(7);
-	cutoff[9] = countCutoff(9);
-	cutoff[10] = countCutoff(10);
-	cutoff[11] = countCutoff(11);
-	cutoff[12] = countCutoff(12);
+	cutoff[0] = (shortInt)countCutoff(0);
+	cutoff[2] = (shortInt)countCutoff(2);
+	cutoff[3] = (shortInt)countCutoff(3);
+	cutoff[4] = (shortInt)countCutoff(4);
+	cutoff[6] = (shortInt)countCutoff(6);
+	cutoff[7] = (shortInt)countCutoff(7);
+	cutoff[9] = (shortInt)countCutoff(9);
+	cutoff[10] = (shortInt)countCutoff(10);
+	cutoff[11] = (shortInt)countCutoff(11);
+	cutoff[12] = (shortInt)countCutoff(12);
 
 	/*Set* first = (*dataSet)[0];
 

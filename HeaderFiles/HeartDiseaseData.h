@@ -220,7 +220,7 @@ public:
 	HeartDiseaseData();
 	~HeartDiseaseData();
 
-	float countImpurity(float yes, float no);
+	static float countImpurity(float yes, float no);
 	void readData(const char* path);
 	void coutData();
 };

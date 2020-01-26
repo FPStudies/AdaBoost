@@ -4,6 +4,7 @@
 #include <iostream>
 #include "../HeaderFiles/HeartDiseaseData.h"
 #include "../HeaderFiles/Tree.h"
+#include "../HeaderFiles/AdaBoost.h"
 
 
 int main()
@@ -29,6 +30,19 @@ int main()
 
 		Samples.push_back(std::move(sample));
 	}
+
+	AdaBoost booster(std::move(Samples), data.cutoff);
+	booster.train(20);
+
+
+	int Correct=0, Incorrect=0;
+	for (int i = 0; i < Samples.size(); ++i)
+	{
+		if (booster.classify(Samples[i]) == Samples[i].clazz) ++Correct;
+		else ++Incorrect;
+	}
+
+	std::cout << "Correct: " << Correct << " \t" << "Incorrect: " << Incorrect << "\n";
 
 	return 0;
 }

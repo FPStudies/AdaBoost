@@ -1,18 +1,3 @@
-﻿  HeartDiseaseData.cpp
-C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\SourceFiles\HeartDiseaseData.cpp(61,88): warning C4244: "argument": konwersja z "double" do "_Ty", możliwa utrata danych
-C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\SourceFiles\HeartDiseaseData.cpp(61,88): warning C4244:         with
-C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\SourceFiles\HeartDiseaseData.cpp(61,88): warning C4244:         [
-C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\SourceFiles\HeartDiseaseData.cpp(61,88): warning C4244:             _Ty=float
-C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\SourceFiles\HeartDiseaseData.cpp(61,88): warning C4244:         ]
-C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\SourceFiles\HeartDiseaseData.cpp(142,25): warning C4244: "=": konwersja z "float" do "shortInt", możliwa utrata danych
-C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\SourceFiles\HeartDiseaseData.cpp(143,25): warning C4244: "=": konwersja z "float" do "shortInt", możliwa utrata danych
-C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\SourceFiles\HeartDiseaseData.cpp(144,25): warning C4244: "=": konwersja z "float" do "shortInt", możliwa utrata danych
-C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\SourceFiles\HeartDiseaseData.cpp(145,25): warning C4244: "=": konwersja z "float" do "shortInt", możliwa utrata danych
-C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\SourceFiles\HeartDiseaseData.cpp(146,25): warning C4244: "=": konwersja z "float" do "shortInt", możliwa utrata danych
-C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\SourceFiles\HeartDiseaseData.cpp(147,25): warning C4244: "=": konwersja z "float" do "shortInt", możliwa utrata danych
-C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\SourceFiles\HeartDiseaseData.cpp(148,25): warning C4244: "=": konwersja z "float" do "shortInt", możliwa utrata danych
-C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\SourceFiles\HeartDiseaseData.cpp(149,26): warning C4244: "=": konwersja z "float" do "shortInt", możliwa utrata danych
-C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\SourceFiles\HeartDiseaseData.cpp(150,26): warning C4244: "=": konwersja z "float" do "shortInt", możliwa utrata danych
-C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\SourceFiles\HeartDiseaseData.cpp(151,26): warning C4244: "=": konwersja z "float" do "shortInt", możliwa utrata danych
-C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\SourceFiles\HeartDiseaseData.cpp(123,10): warning C4101: "ftmp": lokalna zmienna, do której nie istnieje odwołanie
+﻿  PSZT_pr2.cpp
+C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\SourceFiles\PSZT_pr2.cpp(29,21): warning C4244: "=": konwersja z "unsigned __int64" do "long double", możliwa utrata danych
   PSZT_pr2.vcxproj -> C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\x64\Debug\PSZT_pr2.exe

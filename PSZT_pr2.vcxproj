@@ -154,6 +154,7 @@
     <Text Include="Data\newCleveland.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="HeaderFiles\AdaBoost.h" />
     <ClInclude Include="HeaderFiles\HeartDiseaseData.h" />
     <ClInclude Include="HeaderFiles\Nodes.h" />
     <ClInclude Include="HeaderFiles\Sample.h" />
