@@ -1,49 +1,17 @@
-﻿  OryginalTree.cpp
-C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\OryginalTree.cpp(20,27): warning C4305: "inicjowanie": obcięcie z "double" do "const float"
-C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\OryginalTree.cpp(211,1): warning C4244: "+=": konwersja z "_Ty2" do "int", możliwa utrata danych
-C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\OryginalTree.cpp(211,1): warning C4244:         with
-C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\OryginalTree.cpp(211,1): warning C4244:         [
-C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\OryginalTree.cpp(211,1): warning C4244:             _Ty2=unsigned __int64
-C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\OryginalTree.cpp(211,1): warning C4244:         ]
-C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\OryginalTree.cpp(174): message : podczas kompilowania funkcji składowej „std::unique_ptr<ID3<14>::Node,std::default_delete<_Ty>> ID3Train<14>::train(std::_Vector_iterator<std::_Vector_val<std::_Simple_types<Sample<14>>>>,std::_Vector_iterator<std::_Vector_val<std::_Simple_types<Sample<14>>>>)” klasy klasa szablon
-C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\OryginalTree.cpp(174): message :         with
-C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\OryginalTree.cpp(174): message :         [
-C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\OryginalTree.cpp(174): message :             _Ty=ID3<14>::Node
-C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\OryginalTree.cpp(174): message :         ]
-C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\OryginalTree.cpp(169): message : zobacz odwołanie do kompilowanego wystąpienia „std::unique_ptr<ID3<14>::Node,std::default_delete<_Ty>> ID3Train<14>::train(std::_Vector_iterator<std::_Vector_val<std::_Simple_types<Sample<14>>>>,std::_Vector_iterator<std::_Vector_val<std::_Simple_types<Sample<14>>>>)” funkcji szablon
-C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\OryginalTree.cpp(169): message :         with
-C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\OryginalTree.cpp(169): message :         [
-C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\OryginalTree.cpp(169): message :             _Ty=ID3<14>::Node
-C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\OryginalTree.cpp(169): message :         ]
-C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\OryginalTree.cpp(276): message : zobacz odwołanie do kompilowanego wystąpienia „ID3Train<14>” klasy klasa szablon
-  PSZT_pr2.cpp
-C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\OryginalTree.cpp(222,1): warning C4267: "=": konwersja z "size_t" do "_Ty1", możliwa utrata danych
-C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\OryginalTree.cpp(222,1): warning C4267:         with
-C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\OryginalTree.cpp(222,1): warning C4267:         [
-C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\OryginalTree.cpp(222,1): warning C4267:             _Ty1=int
-C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\OryginalTree.cpp(222,1): warning C4267:         ]
-C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\OryginalTree.cpp(20,27): warning C4305: "inicjowanie": obcięcie z "double" do "const float"
-C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\OryginalTree.cpp(211,1): warning C4244: "+=": konwersja z "_Ty2" do "int", możliwa utrata danych
-C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\OryginalTree.cpp(211,1): warning C4244:         with
-C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\OryginalTree.cpp(211,1): warning C4244:         [
-C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\OryginalTree.cpp(211,1): warning C4244:             _Ty2=unsigned __int64
-C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\OryginalTree.cpp(211,1): warning C4244:         ]
-C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\OryginalTree.cpp(174): message : podczas kompilowania funkcji składowej „std::unique_ptr<ID3<14>::Node,std::default_delete<_Ty>> ID3Train<14>::train(std::_Vector_iterator<std::_Vector_val<std::_Simple_types<Sample<14>>>>,std::_Vector_iterator<std::_Vector_val<std::_Simple_types<Sample<14>>>>)” klasy klasa szablon
-C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\OryginalTree.cpp(174): message :         with
-C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\OryginalTree.cpp(174): message :         [
-C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\OryginalTree.cpp(174): message :             _Ty=ID3<14>::Node
-C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\OryginalTree.cpp(174): message :         ]
-C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\OryginalTree.cpp(169): message : zobacz odwołanie do kompilowanego wystąpienia „std::unique_ptr<ID3<14>::Node,std::default_delete<_Ty>> ID3Train<14>::train(std::_Vector_iterator<std::_Vector_val<std::_Simple_types<Sample<14>>>>,std::_Vector_iterator<std::_Vector_val<std::_Simple_types<Sample<14>>>>)” funkcji szablon
-C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\OryginalTree.cpp(169): message :         with
-C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\OryginalTree.cpp(169): message :         [
-C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\OryginalTree.cpp(169): message :             _Ty=ID3<14>::Node
-C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\OryginalTree.cpp(169): message :         ]
-C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\OryginalTree.cpp(276): message : zobacz odwołanie do kompilowanego wystąpienia „ID3Train<14>” klasy klasa szablon
-  Generowanie kodu...
-C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\OryginalTree.cpp(222,1): warning C4267: "=": konwersja z "size_t" do "_Ty1", możliwa utrata danych
-C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\OryginalTree.cpp(222,1): warning C4267:         with
-C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\OryginalTree.cpp(222,1): warning C4267:         [
-C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\OryginalTree.cpp(222,1): warning C4267:             _Ty1=int
-C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\OryginalTree.cpp(222,1): warning C4267:         ]
-PSZT_pr2.obj : error LNK2005: Element "int __cdecl buildID3Tree(void)" (?buildID3Tree@@YAHXZ) jest już zdefiniowany w elemencie OryginalTree.obj
-C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\x64\Debug\PSZT_pr2.exe : fatal error LNK1169: znaleziono co najmniej jeden wielokrotnie zdefiniowany symbol
+﻿  HeartDiseaseData.cpp
+C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\SourceFiles\HeartDiseaseData.cpp(61,82): warning C4244: "argument": konwersja z "double" do "_Ty", możliwa utrata danych
+C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\SourceFiles\HeartDiseaseData.cpp(61,82): warning C4244:         with
+C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\SourceFiles\HeartDiseaseData.cpp(61,82): warning C4244:         [
+C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\SourceFiles\HeartDiseaseData.cpp(61,82): warning C4244:             _Ty=float
+C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\SourceFiles\HeartDiseaseData.cpp(61,82): warning C4244:         ]
+C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\SourceFiles\HeartDiseaseData.cpp(146,25): warning C4244: "=": konwersja z "float" do "shortInt", możliwa utrata danych
+C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\SourceFiles\HeartDiseaseData.cpp(147,25): warning C4244: "=": konwersja z "float" do "shortInt", możliwa utrata danych
+C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\SourceFiles\HeartDiseaseData.cpp(148,25): warning C4244: "=": konwersja z "float" do "shortInt", możliwa utrata danych
+C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\SourceFiles\HeartDiseaseData.cpp(149,25): warning C4244: "=": konwersja z "float" do "shortInt", możliwa utrata danych
+C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\SourceFiles\HeartDiseaseData.cpp(150,25): warning C4244: "=": konwersja z "float" do "shortInt", możliwa utrata danych
+C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\SourceFiles\HeartDiseaseData.cpp(151,25): warning C4244: "=": konwersja z "float" do "shortInt", możliwa utrata danych
+C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\SourceFiles\HeartDiseaseData.cpp(152,25): warning C4244: "=": konwersja z "float" do "shortInt", możliwa utrata danych
+C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\SourceFiles\HeartDiseaseData.cpp(153,26): warning C4244: "=": konwersja z "float" do "shortInt", możliwa utrata danych
+C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\SourceFiles\HeartDiseaseData.cpp(154,26): warning C4244: "=": konwersja z "float" do "shortInt", możliwa utrata danych
+C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\SourceFiles\HeartDiseaseData.cpp(155,26): warning C4244: "=": konwersja z "float" do "shortInt", możliwa utrata danych
+  PSZT_pr2.vcxproj -> C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\x64\Debug\PSZT_pr2.exe

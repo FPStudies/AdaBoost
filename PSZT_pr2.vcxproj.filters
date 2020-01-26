@@ -18,13 +18,7 @@
     <ClCompile Include="SourceFiles\PSZT_pr2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="OryginalTree.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="SourceFiles\HeartDiseaseData.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SourceFiles\Tree.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -47,6 +41,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="HeaderFiles\Tree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Sample.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Nodes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

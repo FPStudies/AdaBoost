@@ -2,19 +2,35 @@
 //
 
 #include <iostream>
-//#include "../HeaderFiles/HeartDiseaseData.h"
-//#include "../HeaderFiles/Tree.h"
-#include "../OryginalTree.cpp"
+#include "../HeaderFiles/HeartDiseaseData.h"
+#include "../HeaderFiles/Tree.h"
+
 
 int main()
 {
     std::cout << "Hello World!\n";
 
-    //HeartDiseaseData data;
-    //data.readData("Data/newSwitzerland.txt");
-    //data.coutData();
+    HeartDiseaseData data;
+    data.readData("Data/newSwitzerland.txt");
+    data.coutData();
 
-	buildID3Tree();
+	//turn pointers to objects
+	std::vector<Sample> Samples;
+	Sample sample;
+
+	for (int i = 0; i < data.dataSet->size(); ++i)
+	{
+		for (int j = 0; j < Sample::ATTRIBUTES_NUMBER; ++j)
+		{
+			sample.attributes[j] = (*((*(data.dataSet))[i])).values[j];
+		}
+		sample.clazz= (*((*(data.dataSet))[i])).values[Sample::ATTRIBUTES_NUMBER];
+		sample.weight = 1 / (*(data.dataSet)).size();
+
+		Samples.push_back(std::move(sample));
+	}
+
+	return 0;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

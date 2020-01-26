@@ -2,6 +2,7 @@
 
 HeartDiseaseData::HeartDiseaseData()
 {
+	allYes = allNo = 0;
 	dataSet = new std::vector<Set*>();
 	dataSet->reserve(1400);
 }
@@ -31,7 +32,49 @@ bool HeartDiseaseData::loadFile(const char* path, std::stringstream& stream)
 	return false;
 }
 
+float HeartDiseaseData::countImpurity(float yes, float no)
+{
+	//std::cout << (1 - ((yes / (yes + no)) * (yes / (yes + no))) - ((no / (yes + no)) * (no / (yes + no)))) << " \n";
+	return (1 - ((yes / (yes + no)) * (yes / (yes + no))) - ((no / (yes + no)) * (no / (yes + no))));
+}
 
+float HeartDiseaseData::countCutoff(int i)
+{
+	sort(dataSet->begin() + 1, dataSet->end(),
+		[&i](const Set* a, const Set* b) -> bool {
+		return a->values[i] < b->values[i];
+	});
+
+	std::vector<float> averages, impurity;
+	int yes = 0;
+	int no = 0;
+	for (auto it = dataSet->begin(); it != dataSet->end()-2; ++it)
+	{
+		if ((*it)->values[NUMBER_OF_ATTR - 1] == 0) ++no;
+		else ++yes;
+
+		float impurityLess = countImpurity((float)yes, (float)no);
+		float impurityMore = countImpurity((float)(allYes - yes), (float)(allNo - no));
+		impurity.push_back(((impurityLess * (float)(yes + no)) + (impurityMore*(float)(allYes + allNo - yes - no)))/ (float)(allYes + allNo));
+
+		if(i==0) std::cout << i << ": " << (((*it)->values[i])) << '+' << ((*(it + 1))->values[i]) << "/2 =" << (((float)(*it)->values[i]) + (float)((*(it + 1))->values[i])) / 2.0 << " \n";
+		averages.push_back(((float)((*it)->values[i]) + (float)((*(it+1))->values[i])) / 2.0);
+	}
+
+	std::pair<float, int> minimpurity;
+	minimpurity.first = 99;
+	minimpurity.second = -1;
+	for (int j = 0; j < impurity.size(); ++j)
+	{
+		if (impurity[j] <= minimpurity.first)
+		{
+			minimpurity.first = impurity[j];
+			minimpurity.second = j;
+		}
+	}
+
+	return averages[minimpurity.second];
+}
 
 void HeartDiseaseData::readData(const char* path)
 {
@@ -63,8 +106,10 @@ void HeartDiseaseData::readData(const char* path)
 #endif
 
 #ifdef SET2
+
+	cutoff[1] = cutoff[5] = cutoff[8] = 0;
+
 	Set* set;
-	dataSet->push_back(new Set());	// first Set is for median
 	dataSet->push_back(set = new Set());
 
 	std::ifstream file;
@@ -85,6 +130,8 @@ void HeartDiseaseData::readData(const char* path)
 					set->values[j] = static_cast<int>(ftmp * 10);
 				}
 			}
+			if (set->values[NUMBER_OF_ATTR - 1] == 0) ++allNo;
+			else ++allYes;
 
 			dataSet->push_back(set = new Set());
 		}
@@ -95,7 +142,19 @@ void HeartDiseaseData::readData(const char* path)
 		std::cout << e.what() << std::endl;
 		return;
 	}
-	Set* first = (*dataSet)[0];
+
+	cutoff[0] = countCutoff(0);
+	cutoff[2] = countCutoff(2);
+	cutoff[3] = countCutoff(3);
+	cutoff[4] = countCutoff(4);
+	cutoff[6] = countCutoff(6);
+	cutoff[7] = countCutoff(7);
+	cutoff[9] = countCutoff(9);
+	cutoff[10] = countCutoff(10);
+	cutoff[11] = countCutoff(11);
+	cutoff[12] = countCutoff(12);
+
+	/*Set* first = (*dataSet)[0];
 
 	for (uint i = 0; i < NUMBER_OF_ATTR; ++i) {
 		first->values[i] = 0;
@@ -129,7 +188,7 @@ void HeartDiseaseData::readData(const char* path)
 		[](const Set* a, const Set* b) -> bool {
 		return a->values[9] > b->values[9];
 	});
-	first->values[9] = dataSet->size() % 2 == 0 ? ((*dataSet)[dataSet->size() / 2]->values[9] + (*dataSet)[dataSet->size() / 2 + 1]->values[9]) / 2 : (*dataSet)[(dataSet->size() + 1) / 2]->values[9];
+	first->values[9] = dataSet->size() % 2 == 0 ? ((*dataSet)[dataSet->size() / 2]->values[9] + (*dataSet)[dataSet->size() / 2 + 1]->values[9]) / 2 : (*dataSet)[(dataSet->size() + 1) / 2]->values[9];*/
 
 
 #endif
@@ -218,6 +277,8 @@ void HeartDiseaseData::coutData()
 	for (auto it : *dataSet) {
 		std::cout << *it << "\n";
 	}
+
+	for (int i = 0; i < NUMBER_OF_ATTR - 1; ++i) std::cout << cutoff[i] << " \t";
 	std::cout.flush();
 }
 

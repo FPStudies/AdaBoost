@@ -147,10 +147,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="OryginalTree.cpp" />
     <ClCompile Include="SourceFiles\HeartDiseaseData.cpp" />
     <ClCompile Include="SourceFiles\PSZT_pr2.cpp" />
-    <ClCompile Include="SourceFiles\Tree.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Data\newCleveland.txt" />
@@ -160,6 +158,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HeaderFiles\HeartDiseaseData.h" />
+    <ClInclude Include="HeaderFiles\Nodes.h" />
+    <ClInclude Include="HeaderFiles\Sample.h" />
     <ClInclude Include="HeaderFiles\Tree.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
