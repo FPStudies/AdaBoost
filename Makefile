@@ -1,7 +1,7 @@
 CC = g++
 FLAGS = -std=c++14 -O2
 
-projectName = AdaBoost
+projectName = AdaBoost.out
 sourceDir = SourceFiles
 headerDir = HeaderFiles
 

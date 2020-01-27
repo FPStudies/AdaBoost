@@ -28,7 +28,7 @@ struct Sample {
 		clazz = std::move(sample.clazz);
 	}*/
 
-	void operator = (Sample& sample) noexcept {
+	void operator = (const Sample& sample) noexcept {
 		attributes = sample.attributes;
 		clazz = sample.clazz;
 		weight = sample.weight;

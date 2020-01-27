@@ -2,8 +2,8 @@
 //
 
 #include <iostream>
-#include "../HeaderFiles/HeartDiseaseData.h"
 #include "../HeaderFiles/Tree.h"
+#include "../HeaderFiles/HeartDiseaseData.h"
 #include "../HeaderFiles/AdaBoost.h"
 
 
@@ -78,7 +78,7 @@ int main(int argc, char* argv[])
 	}
 
 	std::cout << "\nCorrect classifications: " << correct << "\tIncorrect classifications: " << incorrect << "\n";
-	std::cout << "Mean error: " << d;
+	std::cout << "Mean error: " << d << "\n";
 
 	return 0;
 }
