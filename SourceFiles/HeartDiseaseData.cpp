@@ -35,6 +35,7 @@ bool HeartDiseaseData::loadFile(const char* path, std::stringstream& stream)
 float HeartDiseaseData::countImpurity(float yes, float no)
 {
 	//std::cout << (1 - ((yes / (yes + no)) * (yes / (yes + no))) - ((no / (yes + no)) * (no / (yes + no)))) << " \n";
+	if (static_cast<double>(yes) + static_cast<double>(no) == 0.0) return 1.0f;
 	return (1 - ((yes / (yes + no)) * (yes / (yes + no))) - ((no / (yes + no)) * (no / (yes + no))));
 }
 

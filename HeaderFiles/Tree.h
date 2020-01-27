@@ -46,7 +46,6 @@ public:
 private:
 	std::unique_ptr<Node> train(Iter start, Iter end, long double& stumpVote)
 	{
-		auto ig = std::make_pair(0, std::numeric_limits<float>::min());
 		float Gini[Sample::ATTRIBUTES_NUMBER];
 		float YesCorrect[Sample::ATTRIBUTES_NUMBER], YesIncorrect[Sample::ATTRIBUTES_NUMBER], NoCorrect[Sample::ATTRIBUTES_NUMBER], NoIncorrect[Sample::ATTRIBUTES_NUMBER];
 		for (int i = 0; i < Sample::ATTRIBUTES_NUMBER; ++i)
@@ -60,7 +59,7 @@ private:
 				if ((*it).attributes[i] > cutoff[i])
 				{
 					if ((*it).clazz == 0) YesIncorrect[i]+=(float)(*it).weight;
-					else YesIncorrect[i] += (float)(*it).weight;
+					else YesCorrect[i] += (float)(*it).weight;
 				}
 				else
 				{
@@ -80,7 +79,7 @@ private:
 		//find attribute with lowest Gini index
 		std::pair<float, int> minGini;
 		minGini.first = 100.0;
-		minGini.second = -1;
+		minGini.second = 0;
 		for (int i = 0; i < Sample::ATTRIBUTES_NUMBER; ++i)
 		{
 			if (Gini[i] < minGini.first) {
@@ -92,25 +91,28 @@ private:
 
 		//calculate stump weight
 		long double totalError = 0.0;
+		
 		for (auto it = start; it != end; ++it) {
 				//incorrect classifications
-				if (((*it).attributes[decidingAttribute] > cutoff[decidingAttribute] && (*it).clazz == 0) || ((*it).attributes[decidingAttribute] < cutoff[decidingAttribute] && (*it).clazz == 1))
+				if ((((*it).attributes[decidingAttribute] > cutoff[decidingAttribute]) && (*it).clazz == 0) || (((*it).attributes[decidingAttribute] <= cutoff[decidingAttribute]) && (*it).clazz == 1))
 				{
 					totalError += (*it).weight;
 				}
 		}
-		long double stumpWeight = log((1 - totalError+EPS) / (totalError+EPS)) / 2;
+		long double stumpWeight = log((1 - totalError) / (totalError)) / 2;
 		stumpVote = stumpWeight;
-
 		//calculate new sample weights
 		long double weightsum = 0.0;
 		for (auto it = start; it != end; ++it) {
 			//incorrect classifications
-			if (((*it).attributes[decidingAttribute] > cutoff[decidingAttribute] && (*it).clazz == 0) || ((*it).attributes[decidingAttribute] < cutoff[decidingAttribute] && (*it).clazz == 1))
+			if (((*it).attributes[decidingAttribute] > cutoff[decidingAttribute] && (*it).clazz == 0) || ((*it).attributes[decidingAttribute] <= cutoff[decidingAttribute] && (*it).clazz == 1))
 			{
 				weightsum+=(*it).newWeight(stumpWeight);
 			}
-			else weightsum+=(*it).newWeight(-stumpWeight);
+			else
+			{
+				weightsum += (*it).newWeight(-stumpWeight);
+			}
 		}
 		//normalize
 		for (auto it = start; it != end; ++it) {

@@ -17,7 +17,7 @@ public:
 
 	shortInt classify(Sample& sample)
 	{
-		if (classifiers.size() == 0) train(50);
+		if (classifiers.size() == 0) train(20);
 
 		long double Yes = 0.0, No=  0.0;
 		for (int i = 0; i < classifiers.size(); ++i)
