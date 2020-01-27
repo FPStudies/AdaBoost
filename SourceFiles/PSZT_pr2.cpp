@@ -31,29 +31,32 @@ int main()
 		Samples.push_back(std::move(sample));
 	}
 
-	AdaBoost booster(std::move(Samples), data.cutoff);
-	booster.train(20);
+	std::cout << "\nMean error: " << crossValidateAda(5, std::move(Samples), data.cutoff);
 
-	for (int i = data.dataSet->size() - 100; i < data.dataSet->size(); ++i)
-	{
-		for (int j = 0; j < Sample::ATTRIBUTES_NUMBER; ++j)
-		{
-			sample.attributes[j] = (*((*(data.dataSet))[i])).values[j];
-		}
-		sample.clazz = (*((*(data.dataSet))[i])).values[Sample::ATTRIBUTES_NUMBER];
-		sample.weight = 1.0 / static_cast<long double>((*(data.dataSet)).size());
 
-		SamplesV2.push_back(std::move(sample));
-	}
+	///*AdaBoost booster(std::move(Samples), data.cutoff);
+	//booster.train(20);
 
-	int Correct=0, Incorrect=0;
-	for (int i = 0; i < SamplesV2.size(); ++i)
-	{
-		if (booster.classify(SamplesV2[i]) == SamplesV2[i].clazz) ++Correct;
-		else ++Incorrect;
-	}
+	//for (int i = data.dataSet->size() - 100; i < data.dataSet->size(); ++i)
+	//{
+	//	for (int j = 0; j < Sample::ATTRIBUTES_NUMBER; ++j)
+	//	{
+	//		sample.attributes[j] = (*((*(data.dataSet))[i])).values[j];
+	//	}
+	//	sample.clazz = (*((*(data.dataSet))[i])).values[Sample::ATTRIBUTES_NUMBER];
+	//	sample.weight = 1.0 / static_cast<long double>((*(data.dataSet)).size());
 
-	std::cout << "\nCorrect: " << Correct << " \t" << "Incorrect: " << Incorrect << "\n";
+	//	SamplesV2.push_back(std::move(sample));
+	//}
+
+	//int Correct=0, Incorrect=0;
+	//for (int i = 0; i < SamplesV2.size(); ++i)
+	//{
+	//	if (booster.classify(SamplesV2[i]) == SamplesV2[i].clazz) ++Correct;
+	//	else ++Incorrect;
+	//}
+
+	//std::cout << "\nCorrect: " << Correct << " \t" << "Incorrect: " << Incorrect << "\n";*/
 
 	return 0;
 }
