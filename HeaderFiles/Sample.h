@@ -16,6 +16,8 @@ struct Sample {
 
 	Sample()  noexcept : attributes(std::array<shortInt, ATTRIBUTES_NUMBER>()), clazz(0), weight(0) {};
 
+	Sample(const Sample& other) : attributes(other.attributes), clazz(other.clazz), weight(other.weight) {};
+
 	Sample(Sample&& sample)  noexcept : attributes(std::move(sample.attributes)), clazz(std::move(sample.clazz)), weight(std::move(sample.weight)) {}
 
 	void operator = (Sample&& sample) noexcept {

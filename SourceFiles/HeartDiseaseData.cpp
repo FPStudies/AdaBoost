@@ -276,7 +276,7 @@ void HeartDiseaseData::coutData()
 		std::cout << *it << "\n";
 	}
 
-	std::cout << "cutoff points:\n";
+	std::cout << "\nCutoff points:\n";
 	for (int i = 0; i < NUMBER_OF_ATTR - 1; ++i) std::cout << cutoff[i] << " \t";
 	std::cout << "\n";
 	std::cout << dataSet->size();
