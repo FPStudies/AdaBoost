@@ -208,17 +208,19 @@ private:
 #endif
 	friend std::ostream& operator<<(std::ostream& stream, const Set& set);
 
-	std::vector<Set*>* dataSet;
-
-
-
 	bool loadFile(const char* path, std::stringstream& stream);
 	bool isDataSet = false;
 
+	float countCutoff(int i);
 public:
+	shortInt cutoff[NUMBER_OF_ATTR - 1];
+	std::vector<Set*>* dataSet;
+	int allYes, allNo;
+
 	HeartDiseaseData();
 	~HeartDiseaseData();
 
+	static float countImpurity(float yes, float no);
 	void readData(const char* path);
 	void coutData();
 };
