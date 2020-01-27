@@ -23,11 +23,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Data\newCleveland.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="HeaderFiles\HeartDiseaseData.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -43,5 +38,18 @@
     <ClInclude Include="HeaderFiles\AdaBoost.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Data\ClevelandTeach.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="Data\ClevelandValidate.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Data\script.py">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

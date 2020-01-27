@@ -11,6 +11,7 @@ struct Sample {
 	std::array<shortInt, ATTRIBUTES_NUMBER> attributes;
 	// Class to which the sample belongs.
 	shortInt clazz;
+	// Sample weight
 	long double weight;
 
 
@@ -30,4 +31,14 @@ struct Sample {
 		weight = weight * exp(treeWeight);
 		return weight;
 	}
+
+	friend std::ostream& operator<<(std::ostream& stream, const Sample& sample)
+	{
+
+		for (int i = 0; i < ATTRIBUTES_NUMBER; ++i) stream << sample.attributes[i] << " \t";
+		stream << sample.clazz << " \t";
+
+	return stream;
+	}
 };
+
