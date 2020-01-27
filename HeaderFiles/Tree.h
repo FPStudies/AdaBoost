@@ -11,11 +11,6 @@ public:
 		return root->classify(sample);
 	}
 
-	//void print(std::ostream& os)
-	//{
-	//	root->print(os, 0);
-	//}
-
 	Stump(std::unique_ptr<Node>&& root, long double stumpWeight) : root(std::move(root)), stumpWeight(stumpWeight) {}
 
 	/// Root node of the decision tree.

@@ -7,67 +7,78 @@
 #include "../HeaderFiles/AdaBoost.h"
 
 
-int main()
+int main(int argc, char* argv[])
 {
-    std::cout << "Hello World!\n";
+	if (argc != 3)
+	{
+		std::cout << "Usage: AdaBoost TeachSetFile ValidateSetFile\n";
+		return 1;
+	}
 
-    HeartDiseaseData data;
-    data.readData("Data/newCleveland.txt");
-    data.coutData();
+    HeartDiseaseData dataTeach, dataValidate;
+    dataTeach.readData(argv[1]);
+	dataValidate.readData(argv[2]);
+	if (!dataTeach.isSet() || !dataValidate.isSet())
+	{
+		std::cout << "Could not load data.\n";
+		return 1;
+	}
+    //dataTeach.coutData();
 
 	//turn pointers to objects
-	std::vector<Sample> Samples, SamplesV2;
+	std::vector<Sample> teachSamples, validateSamples;
 	Sample sample;
 
-	for (int i = 0; i < data.dataSet->size()-100; ++i)
+	for (int i = 0; i < dataTeach.dataSet->size(); ++i)
 	{
 		for (int j = 0; j < Sample::ATTRIBUTES_NUMBER; ++j)
 		{
-			sample.attributes[j] = (*((*(data.dataSet))[i])).values[j];
+			sample.attributes[j] = (*((*(dataTeach.dataSet))[i])).values[j];
 		}
-		sample.clazz= (*((*(data.dataSet))[i])).values[Sample::ATTRIBUTES_NUMBER];
-		sample.weight = 1.0 / static_cast<long double>((*(data.dataSet)).size());
+		sample.clazz= (*((*(dataTeach.dataSet))[i])).values[Sample::ATTRIBUTES_NUMBER];
+		sample.weight = 1.0 / static_cast<long double>((*(dataTeach.dataSet)).size());
 
-		Samples.push_back(std::move(sample));
+		teachSamples.push_back(std::move(sample));
 	}
 
-	std::cout << "\nMean error: " << crossValidateAda(5, std::move(Samples), data.cutoff);
+	for (int i = 0; i < dataValidate.dataSet->size(); ++i)
+	{
+		for (int j = 0; j < Sample::ATTRIBUTES_NUMBER; ++j)
+		{
+			sample.attributes[j] = (*((*(dataValidate.dataSet))[i])).values[j];
+		}
+		sample.clazz = (*((*(dataValidate.dataSet))[i])).values[Sample::ATTRIBUTES_NUMBER];
+		//sample.weight = 1.0 / static_cast<long double>((*(dataValidate.dataSet)).size());
 
+		validateSamples.push_back(std::move(sample));
+	}
 
-	///*AdaBoost booster(std::move(Samples), data.cutoff);
-	//booster.train(20);
+	long double d = crossValidateAda(5, teachSamples, dataTeach.cutoff);
+	
+	AdaBoost classifier(std::move(teachSamples), dataTeach.cutoff);
+	classifier.train(20);
+	int correct=0, incorrect=0;
+	shortInt clazz=0, guess=0;
+	for (int i = 0; i < validateSamples.size(); ++i)
+	{
+		clazz = validateSamples[i].clazz;
+		guess = classifier.classify(validateSamples[i]);
 
-	//for (int i = data.dataSet->size() - 100; i < data.dataSet->size(); ++i)
-	//{
-	//	for (int j = 0; j < Sample::ATTRIBUTES_NUMBER; ++j)
-	//	{
-	//		sample.attributes[j] = (*((*(data.dataSet))[i])).values[j];
-	//	}
-	//	sample.clazz = (*((*(data.dataSet))[i])).values[Sample::ATTRIBUTES_NUMBER];
-	//	sample.weight = 1.0 / static_cast<long double>((*(data.dataSet)).size());
+		
 
-	//	SamplesV2.push_back(std::move(sample));
-	//}
+		std::cout << validateSamples[i] << "- \t" << guess;
 
-	//int Correct=0, Incorrect=0;
-	//for (int i = 0; i < SamplesV2.size(); ++i)
-	//{
-	//	if (booster.classify(SamplesV2[i]) == SamplesV2[i].clazz) ++Correct;
-	//	else ++Incorrect;
-	//}
+		if (clazz == guess) ++correct;
+		else
+		{
+			std::cout << "\t#";
+			++incorrect;
+		}
+		std::cout<<"\n";
+	}
 
-	//std::cout << "\nCorrect: " << Correct << " \t" << "Incorrect: " << Incorrect << "\n";*/
+	std::cout << "\nCorrect classifications: " << correct << "\tIncorrect classifications: " << incorrect << "\n";
+	std::cout << "Mean error: " << d;
 
 	return 0;
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file

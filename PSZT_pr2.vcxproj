@@ -151,14 +151,18 @@
     <ClCompile Include="SourceFiles\PSZT_pr2.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Data\newCleveland.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="HeaderFiles\AdaBoost.h" />
     <ClInclude Include="HeaderFiles\HeartDiseaseData.h" />
     <ClInclude Include="HeaderFiles\Nodes.h" />
     <ClInclude Include="HeaderFiles\Sample.h" />
     <ClInclude Include="HeaderFiles\Tree.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Data\ClevelandTeach.txt" />
+    <Text Include="Data\ClevelandValidate.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Data\script.py" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
