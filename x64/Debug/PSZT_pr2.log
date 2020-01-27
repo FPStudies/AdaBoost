@@ -1,9 +1,2 @@
-﻿  HeartDiseaseData.cpp
-  PSZT_pr2.cpp
-  Generowanie kodu...
-C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\SourceFiles\HeartDiseaseData.cpp(62,88): warning C4244: "argument": konwersja z "double" do "_Ty", możliwa utrata danych
-C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\SourceFiles\HeartDiseaseData.cpp(62,88): warning C4244:         with
-C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\SourceFiles\HeartDiseaseData.cpp(62,88): warning C4244:         [
-C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\SourceFiles\HeartDiseaseData.cpp(62,88): warning C4244:             _Ty=float
-C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\SourceFiles\HeartDiseaseData.cpp(62,88): warning C4244:         ]
+﻿  PSZT_pr2.cpp
   PSZT_pr2.vcxproj -> C:\Users\Admin\Documents\Studies\S5\PSZT\AdaBoost\x64\Debug\PSZT_pr2.exe

@@ -223,4 +223,5 @@ public:
 	static float countImpurity(float yes, float no);
 	void readData(const char* path);
 	void coutData();
+	const bool isSet();
 };

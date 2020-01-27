@@ -33,7 +33,7 @@ public:
 	}
 };
 
-long double crossValidateAda(int parts, std::vector<Sample>&& samples, shortInt* cutoff)
+long double crossValidateAda(int parts, std::vector<Sample> samples, shortInt* cutoff)
 {
 	std::random_shuffle(samples.begin(), samples.end());
 

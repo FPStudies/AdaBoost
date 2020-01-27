@@ -34,7 +34,6 @@ bool HeartDiseaseData::loadFile(const char* path, std::stringstream& stream)
 
 float HeartDiseaseData::countImpurity(float yes, float no)
 {
-	//std::cout << (1 - ((yes / (yes + no)) * (yes / (yes + no))) - ((no / (yes + no)) * (no / (yes + no)))) << " \n";
 	if (static_cast<double>(yes) + static_cast<double>(no) == 0.0) return 1.0f;
 	return (1 - ((yes / (yes + no)) * (yes / (yes + no))) - ((no / (yes + no)) * (no / (yes + no))));
 }
@@ -58,7 +57,6 @@ float HeartDiseaseData::countCutoff(int i)
 		float impurityMore = countImpurity((float)(allYes - yes), (float)(allNo - no));
 		impurity.push_back(((impurityLess * (float)(yes + no)) + (impurityMore*(float)(allYes + allNo - yes - no)))/ (float)(allYes + allNo));
 
-		//if(i==0) std::cout << i << ": " << (((*it)->values[i])) << '+' << ((*(it + 1))->values[i]) << "/2 =" << (((float)(*it)->values[i]) + (float)((*(it + 1))->values[i])) / 2.0 << " \n";
 		averages.push_back((((double)((*it)->values[i])) + ((double)((*(it+1))->values[i]))) / 2.0);
 	}
 
@@ -111,7 +109,6 @@ void HeartDiseaseData::readData(const char* path)
 	
 
 	Set* set;
-	//dataSet->push_back(set);
 
 	std::ifstream file;
 	file.exceptions(std::ifstream::failbit | std::ifstream::badbit);
@@ -138,7 +135,6 @@ void HeartDiseaseData::readData(const char* path)
 		std::cout << e.what() << std::endl;
 		return;
 	}
-	//dataSet->pop_back();
 
 	cutoff[1] = cutoff[5] = cutoff[8] = 0;
 	cutoff[0] = (shortInt)countCutoff(0);
@@ -151,43 +147,6 @@ void HeartDiseaseData::readData(const char* path)
 	cutoff[10] = (shortInt)countCutoff(10);
 	cutoff[11] = (shortInt)countCutoff(11);
 	cutoff[12] = (shortInt)countCutoff(12);
-
-	/*Set* first = (*dataSet)[0];
-
-	for (uint i = 0; i < NUMBER_OF_ATTR; ++i) {
-		first->values[i] = 0;
-	}
-
-	sort(dataSet->begin() + 1, dataSet->end(),
-		[](const Set* a, const Set* b) -> bool {
-		return a->values[0] > b->values[0];
-	});
-	first->values[0] = dataSet->size() % 2 == 0 ? ((*dataSet)[dataSet->size() / 2]->values[0] + (*dataSet)[dataSet->size() / 2 + 1]->values[0]) / 2 : (*dataSet)[(dataSet->size() + 1) / 2]->values[0];
-
-	sort(dataSet->begin() + 1, dataSet->end(),
-		[](const Set* a, const Set* b) -> bool {
-		return a->values[3] > b->values[3];
-	});
-	first->values[3] = dataSet->size() % 2 == 0 ? ((*dataSet)[dataSet->size() / 2]->values[3] + (*dataSet)[dataSet->size() / 2 + 1]->values[3]) / 2 : (*dataSet)[(dataSet->size() + 1) / 2]->values[3];
-
-	sort(dataSet->begin() + 1, dataSet->end(),
-		[](const Set* a, const Set* b) -> bool {
-		return a->values[4] > b->values[4];
-	});
-	first->values[4] = dataSet->size() % 2 == 0 ? ((*dataSet)[dataSet->size() / 2]->values[4] + (*dataSet)[dataSet->size() / 2 + 1]->values[4]) / 2 : (*dataSet)[(dataSet->size() + 1) / 2]->values[4];
-
-	sort(dataSet->begin() + 1, dataSet->end(),
-		[](const Set* a, const Set* b) -> bool {
-		return a->values[7] > b->values[7];
-	});
-	first->values[7] = dataSet->size() % 2 == 0 ? ((*dataSet)[dataSet->size() / 2]->values[7] + (*dataSet)[dataSet->size() / 2 + 1]->values[7]) / 2 : (*dataSet)[(dataSet->size() + 1) / 2]->values[7];
-
-	sort(dataSet->begin() + 1, dataSet->end(),
-		[](const Set* a, const Set* b) -> bool {
-		return a->values[9] > b->values[9];
-	});
-	first->values[9] = dataSet->size() % 2 == 0 ? ((*dataSet)[dataSet->size() / 2]->values[9] + (*dataSet)[dataSet->size() / 2 + 1]->values[9]) / 2 : (*dataSet)[(dataSet->size() + 1) / 2]->values[9];*/
-
 
 #endif
 
@@ -283,10 +242,10 @@ void HeartDiseaseData::coutData()
 	std::cout.flush();
 }
 
-
-
-
-
+const bool HeartDiseaseData::isSet()
+{
+	return isDataSet;
+}
 
 std::ostream& operator<<(std::ostream& stream, const HeartDiseaseData::Set& set)
 {
