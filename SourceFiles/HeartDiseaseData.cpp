@@ -1,3 +1,6 @@
+#ifndef HEARTDISEASEDATA_CPP
+#define HEARTDISEASEDATA_CPP
+
 #include "../HeaderFiles/HeartDiseaseData.h"
 
 HeartDiseaseData::HeartDiseaseData()
@@ -269,3 +272,5 @@ std::ostream& operator<<(std::ostream& stream, const HeartDiseaseData::Set& set)
 #ifdef SET3
 #undef SET3
 #endif
+
+#endif //HEARTDISEASEDATA_CPP

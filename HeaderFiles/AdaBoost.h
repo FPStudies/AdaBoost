@@ -1,5 +1,7 @@
-#pragma once
+#ifndef ADABOOST_H
+#define ADABOOST_H
 #include "Tree.h"
+#include <algorithm>
 
 const static int DEFAULT_STUMP_NUM = 20;
 
@@ -89,3 +91,5 @@ long double crossValidateAda(int parts, std::vector<Sample> samples, shortInt* c
 	//count mean error for whole classifier
 	return (sumq / static_cast<long double>(q.size()));
 }
+
+#endif //ADABOOST_H

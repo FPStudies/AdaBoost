@@ -1,4 +1,5 @@
-#pragma once
+#ifndef NODE_H
+#define NODE_H
 #include <unordered_map>
 #include "HeartDiseaseData.h"
 #include "Sample.h"
@@ -16,3 +17,5 @@ private:
 	size_t attribute;
 	shortInt cutoff;
 };
+
+#endif //NODE_H

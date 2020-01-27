@@ -1,4 +1,5 @@
-#pragma once
+#ifndef HEARTDISEASEDATA_H
+#define HEARTDISEASEDATA_H
 #include <string>
 #include <limits.h>
 #include <fstream>
@@ -9,7 +10,11 @@
 
 #define SET2
 
+#ifdef __linux__
+typedef __int16_t shortInt;
+#elif _WIN32
 typedef __int16 shortInt;
+#endif
 typedef unsigned int uint;
 typedef unsigned char uchar;
 
@@ -225,3 +230,5 @@ public:
 	void coutData();
 	const bool isSet();
 };
+
+#endif //HEARTDISEASEDATA_H

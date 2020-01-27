@@ -1,6 +1,8 @@
-#pragma once
+#ifndef TREE_H
+#define TREE_H
 #include "Sample.h"
 #include "Nodes.h"
+#include <memory>
 
 const static double EPS = 1e-7;
 
@@ -117,3 +119,5 @@ private:
 		return std::make_unique</*Inner*/Node>(decidingAttribute, cutoff[decidingAttribute]);
 	}
 };
+
+#endif //TREE_H

@@ -1,7 +1,9 @@
-#pragma once
+#ifndef SAMPLE_H
+#define SAMPLE_H
 #include <iostream>
 #include "HeartDiseaseData.h"
 #include <array>
+#include <math.h>
 
 
 struct Sample {
@@ -21,9 +23,22 @@ struct Sample {
 
 	Sample(Sample&& sample)  noexcept : attributes(std::move(sample.attributes)), clazz(std::move(sample.clazz)), weight(std::move(sample.weight)) {}
 
-	void operator = (Sample&& sample) noexcept {
+	/*void operator = (Sample&& sample) noexcept {
 		attributes = std::move(sample.attributes);
 		clazz = std::move(sample.clazz);
+	}*/
+
+	void operator = (Sample& sample) noexcept {
+		attributes = sample.attributes;
+		clazz = sample.clazz;
+		weight = sample.weight;
+	}
+
+	void swap(Sample& a, Sample& b)
+	{
+		Sample tmp = a;
+		a = b;
+		b = tmp;
 	}
 
 	long double newWeight(double treeWeight)
@@ -41,4 +56,6 @@ struct Sample {
 	return stream;
 	}
 };
+
+#endif //SAMPLE_H
 
