@@ -91,18 +91,22 @@ private:
 		
 		for (auto it = start; it != end; ++it) {
 				//incorrect classifications
-				if ((((*it).attributes[decidingAttribute] > cutoff[decidingAttribute]) && (*it).clazz == 0) || (((*it).attributes[decidingAttribute] <= cutoff[decidingAttribute]) && (*it).clazz == 1))
-				{
-					totalError += (*it).weight;
-				}
+			if ((((*it).attributes[decidingAttribute] > cutoff[decidingAttribute]) && (*it).clazz == 0) || \
+				(((*it).attributes[decidingAttribute] <= cutoff[decidingAttribute]) && (*it).clazz == 1))
+			{
+				totalError += (*it).weight;
+			}
 		}
 		long double stumpWeight = log((1 - totalError) / (totalError)) / 2;
 		stumpVote = stumpWeight;
+
 		//calculate new sample weights
 		long double weightsum = 0.0;
+
 		for (auto it = start; it != end; ++it) {
 			//incorrect classifications
-			if (((*it).attributes[decidingAttribute] > cutoff[decidingAttribute] && (*it).clazz == 0) || ((*it).attributes[decidingAttribute] <= cutoff[decidingAttribute] && (*it).clazz == 1))
+			if (((*it).attributes[decidingAttribute] > cutoff[decidingAttribute] && (*it).clazz == 0) || \
+				((*it).attributes[decidingAttribute] <= cutoff[decidingAttribute] && (*it).clazz == 1))
 			{
 				weightsum+=(*it).newWeight(stumpWeight);
 			}

@@ -23,11 +23,6 @@ struct Sample {
 
 	Sample(Sample&& sample)  noexcept : attributes(std::move(sample.attributes)), clazz(std::move(sample.clazz)), weight(std::move(sample.weight)) {}
 
-	/*void operator = (Sample&& sample) noexcept {
-		attributes = std::move(sample.attributes);
-		clazz = std::move(sample.clazz);
-	}*/
-
 	void operator = (const Sample& sample) noexcept {
 		attributes = sample.attributes;
 		clazz = sample.clazz;

@@ -37,35 +37,42 @@ bool HeartDiseaseData::loadFile(const char* path, std::stringstream& stream)
 
 float HeartDiseaseData::countImpurity(float yes, float no)
 {
-	if (static_cast<double>(yes) + static_cast<double>(no) == 0.0) return 1.0f;
-	return (1 - ((yes / (yes + no)) * (yes / (yes + no))) - ((no / (yes + no)) * (no / (yes + no))));
+	float tmp = yes + no;
+	if (tmp == 0.0f) return 1.0f;
+	return (1 - ((yes / (tmp)) * (yes / (tmp))) - ((no / (tmp)) * (no / (tmp))));
 }
 
-float HeartDiseaseData::countCutoff(int i)
+float HeartDiseaseData::countCutoffLine(int i)
 {
+	// sort by i-th value
 	sort(dataSet->begin(), dataSet->end()-1,
 		[&i](const Set* a, const Set* b) -> bool {
 		return a->values[i] < b->values[i];
 	});
 
+	// the average value of the attribute and impurity of the choice
 	std::vector<float> averages, impurity;
+
+	// for counting if the disease is present or not
 	int yes = 0;
 	int no = 0;
-	for (auto it = dataSet->begin(); it != dataSet->end()-1; ++it)
+
+	for (auto it = dataSet->begin(); it != dataSet->end() - 1; ++it)
 	{
-		if ((*it)->values[NUMBER_OF_ATTR - 1] == 0) ++no;
+		if ((*it)->values[NUMBER_OF_ATTR - 1] == 0) ++no;	// the last atribute tell us about disease
 		else ++yes;
 
 		float impurityLess = countImpurity((float)yes, (float)no);
-		float impurityMore = countImpurity((float)(allYes - yes), (float)(allNo - no));
-		impurity.push_back(((impurityLess * (float)(yes + no)) + (impurityMore*(float)(allYes + allNo - yes - no)))/ (float)(allYes + allNo));
+		float impurityMoreOrEqual = countImpurity((float)(allYes - yes), (float)(allNo - no));
+		impurity.push_back(((impurityLess * (float)(yes + no)) + (impurityMoreOrEqual * (float)(allYes + allNo - yes - no)))/ (float)(allYes + allNo));
 
-		averages.push_back((((double)((*it)->values[i])) + ((double)((*(it+1))->values[i]))) / 2.0);
+		averages.push_back(((*it)->values[i] + ((*(it + 1))->values[i])) / 2.0f);
 	}
 
+	// find the lowest impurity
 	std::pair<float, int> minimpurity;
-	minimpurity.first = 99;
-	minimpurity.second = -1;
+	minimpurity.first = 99; // for impurity value
+	minimpurity.second = -1; // for average attribute value
 	for (int j = 0; j < impurity.size(); ++j)
 	{
 		if (impurity[j] <= minimpurity.first)
@@ -80,37 +87,6 @@ float HeartDiseaseData::countCutoff(int i)
 
 void HeartDiseaseData::readData(const char* path)
 {
-#ifdef SET1
-	std::string* data = new std::string;
-	data->reserve(100000);
-
-	loadFile(path, *data);
-
-	for (auto it : *data) {
-		std::string tmp;
-		int numb;
-		float fnumb;
-		bool isFloat = false;
-
-		if (it >= 0x30 && it <= 0x39) {
-			tmp = tmp + it;
-		}
-		else if (it == ',') {
-
-		}
-		else if (it == '.') {
-
-		}
-		else if (it == '?') {
-
-		}
-	}
-#endif
-
-#ifdef SET2
-
-	
-
 	Set* set;
 
 	std::ifstream file;
@@ -127,9 +103,7 @@ void HeartDiseaseData::readData(const char* path)
 				file >> set->values[j];
 			}
 			if (set->values[NUMBER_OF_ATTR - 1] == 0) ++allNo;
-			else ++allYes;
-
-			
+			else ++allYes;			
 		}
 
 		file.close();
@@ -139,90 +113,20 @@ void HeartDiseaseData::readData(const char* path)
 		return;
 	}
 
-	cutoff[1] = cutoff[5] = cutoff[8] = 0;
-	cutoff[0] = (shortInt)countCutoff(0);
-	cutoff[2] = (shortInt)countCutoff(2);
-	cutoff[3] = (shortInt)countCutoff(3);
-	cutoff[4] = (shortInt)countCutoff(4);
-	cutoff[6] = (shortInt)countCutoff(6);
-	cutoff[7] = (shortInt)countCutoff(7);
-	cutoff[9] = (shortInt)countCutoff(9);
-	cutoff[10] = (shortInt)countCutoff(10);
-	cutoff[11] = (shortInt)countCutoff(11);
-	cutoff[12] = (shortInt)countCutoff(12);
+	// because of boolean values
+	cutoffLine[1] = cutoffLine[5] = cutoffLine[8] = 0;	
 
-#endif
-
-#ifdef SET3
-	std::stringstream stream;
-	std::string* data = new std::string;
-	data->reserve(100000);
-
-	loadFile(path, stream);
-
-	Set* set;
-	dataSet->push_back(set = new Set());
-
-	std::string tmp;
-	uint index = 0;
-
-	while (stream) {
-		++index;
-		stream >> tmp;
-
-		switch (index) {
-		case 3:
-			set->age = tmp;
-			break;
-		case 4:
-			set->sex = tmp;
-			break;
-		case 9:
-			set->cp = tmp;
-			break;
-		case 10:
-			set->trestbps = tmp;
-			break;
-		case 12:
-			set->chol = tmp;
-			break;
-		case 16:
-			set->fbs = tmp;
-			break;
-		case 19:
-			set->restecg = tmp;
-			break;
-		case 32:
-			set->thalach = tmp;
-			break;
-		case 38:
-			set->exang = tmp;
-			break;
-		case 40:
-			set->oldpeak = tmp;
-			break;
-		case 41:
-			set->slope = tmp;
-			break;
-		case 44:
-			set->ca = tmp;
-			break;
-		case 51:
-			set->thal = tmp;
-			break;
-		case 58:
-			set->num = tmp;
-			break;
-		case 76:
-			index = 0;
-			dataSet->push_back(set = new Set());
-			break;
-		}
-	}
-
-	delete data;
-
-#endif
+	// the rest of values types
+	cutoffLine[0] = (shortInt)countCutoffLine(0);
+	cutoffLine[2] = (shortInt)countCutoffLine(2);
+	cutoffLine[3] = (shortInt)countCutoffLine(3);
+	cutoffLine[4] = (shortInt)countCutoffLine(4);
+	cutoffLine[6] = (shortInt)countCutoffLine(6);
+	cutoffLine[7] = (shortInt)countCutoffLine(7);
+	cutoffLine[9] = (shortInt)countCutoffLine(9);
+	cutoffLine[10] = (shortInt)countCutoffLine(10);
+	cutoffLine[11] = (shortInt)countCutoffLine(11);
+	cutoffLine[12] = (shortInt)countCutoffLine(12);
 
 	isDataSet = true;
 }
@@ -239,7 +143,7 @@ void HeartDiseaseData::coutData()
 	}
 
 	std::cout << "\nCutoff points:\n";
-	for (int i = 0; i < NUMBER_OF_ATTR - 1; ++i) std::cout << cutoff[i] << " \t";
+	for (int i = 0; i < NUMBER_OF_ATTR - 1; ++i) std::cout << cutoffLine[i] << " \t";
 	std::cout << "\n";
 	std::cout << dataSet->size();
 	std::cout.flush();
@@ -252,25 +156,10 @@ const bool HeartDiseaseData::isSet()
 
 std::ostream& operator<<(std::ostream& stream, const HeartDiseaseData::Set& set)
 {
-#ifdef SET2
 	stream << set.values[0] << "\t" << set.values[1] << "\t" << set.values[2] << "\t" << set.values[3] << "\t" << set.values[4] << "\t" << set.values[5] << "\t" << set.values[6] << "\t" \
 		<< set.values[7] << "\t" << set.values[8] << "\t" << set.values[9] << "\t" << set.values[10] << "\t" << set.values[11] << "\t" << set.values[12] << "\t" << set.values[13] << "\t";
 
 	return stream;
-#endif
 }
-
-
-#ifdef SET1
-#undef SET1
-#endif
-
-#ifdef SET2
-#undef SET2
-#endif
-
-#ifdef SET3
-#undef SET3
-#endif
 
 #endif //HEARTDISEASEDATA_CPP

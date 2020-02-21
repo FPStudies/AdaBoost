@@ -11,24 +11,28 @@ int main(int argc, char* argv[])
 {
 	if (argc != 3)
 	{
-		std::cout << "Usage: AdaBoost TeachSetFile ValidateSetFile\n";
+		std::cout << "Wrong arguments. Usage: AdaBoost TeachSetFile ValidateSetFile\n";
 		return 1;
 	}
 
     HeartDiseaseData dataTeach, dataValidate;
+
+	// read data from file
     dataTeach.readData(argv[1]);
 	dataValidate.readData(argv[2]);
+
 	if (!dataTeach.isSet() || !dataValidate.isSet())
 	{
 		std::cout << "Could not load data.\n";
 		return 1;
 	}
-    //dataTeach.coutData();
+
 
 	//turn pointers to objects
 	std::vector<Sample> teachSamples, validateSamples;
 	Sample sample;
 
+	// copy data
 	for (int i = 0; i < dataTeach.dataSet->size(); ++i)
 	{
 		for (int j = 0; j < Sample::ATTRIBUTES_NUMBER; ++j)
@@ -36,7 +40,9 @@ int main(int argc, char* argv[])
 			sample.attributes[j] = (*((*(dataTeach.dataSet))[i])).values[j];
 		}
 		sample.clazz= (*((*(dataTeach.dataSet))[i])).values[Sample::ATTRIBUTES_NUMBER];
-		sample.weight = 1.0 / static_cast<long double>((*(dataTeach.dataSet)).size());
+
+		// at the beginning all of the samples have the same weight
+		sample.weight = 1.0 / static_cast<long double>((*(dataTeach.dataSet)).size()); 
 
 		teachSamples.push_back(std::move(sample));
 	}
@@ -48,23 +54,25 @@ int main(int argc, char* argv[])
 			sample.attributes[j] = (*((*(dataValidate.dataSet))[i])).values[j];
 		}
 		sample.clazz = (*((*(dataValidate.dataSet))[i])).values[Sample::ATTRIBUTES_NUMBER];
-		//sample.weight = 1.0 / static_cast<long double>((*(dataValidate.dataSet)).size());
 
 		validateSamples.push_back(std::move(sample));
 	}
 
-	long double d = crossValidateAda(5, teachSamples, dataTeach.cutoff);
+
+
+	long double d = crossValidateAda(5, teachSamples, dataTeach.cutoffLine);
 	
-	AdaBoost classifier(std::move(teachSamples), dataTeach.cutoff);
+	AdaBoost classifier(std::move(teachSamples), dataTeach.cutoffLine);
+
 	classifier.train(20);
+
 	int correct=0, incorrect=0;
 	shortInt clazz=0, guess=0;
+
 	for (int i = 0; i < validateSamples.size(); ++i)
 	{
 		clazz = validateSamples[i].clazz;
 		guess = classifier.classify(validateSamples[i]);
-
-		
 
 		std::cout << validateSamples[i] << "- \t" << guess;
 
