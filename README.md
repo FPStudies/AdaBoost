@@ -19,7 +19,21 @@ Input have 2 files. The first one is for teaching, the second one is for validat
 14. num			// Value 0: < 50% diameter narrowing; --Value 1: > 50 % diameter narrowing
 
 Data was fetch from https://archive.ics.uci.edu/ml/datasets/Heart+Disease where you can find more information.
-Caution - data present on the above page has been processed to match the program input. 
+
+Program can be compiled via Visual Studio for Windows or Makefile for Linux.
+
+Caution - data present on the above page has been processed to match the program input. This means that it sholud have binary input (0 or 1) for 2th, 6th and 9th variable. Moreover floating point data is presented as non-negative integer (multiplied by 10). In short all data types are non-negative integer.
+
+###### Program`s arguments 
+1. Path to file which contains data for teaching
+2. Path to file which contains data used in validation
+
+Files at the top contains number of records. Records are in order as above. 
+
+###### Output
+It prints out data set that was mean for validating and for each record it marks it if the algorithm`s guess was incorrect.
+
+Then it prints out number of correct classifications, incorrect classifications and mean error which means an error of result missmatch that uses k-fold cross-validation.
 
 ###### Details
 Program was write based on https://youtu.be/LsK-xG1cLYA on youtube where everything is clearly explained.
