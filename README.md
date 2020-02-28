@@ -28,7 +28,7 @@ Caution - data present on the above page has been processed to match the program
 1. Path to file which contains data for teaching
 2. Path to file which contains data used in validation
 
-Files at the top contains number of records. Records are in order as above. 
+Files at the top contains number of records. Data in record is in order as above. 
 
 ###### Output
 It prints out data set that was mean for validating and for each record it marks it if the algorithm`s guess was incorrect.
